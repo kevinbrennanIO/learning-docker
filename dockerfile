@@ -1,5 +1,16 @@
-# Every docker file needs to have a from instruction. 
 
-FROM ubuntu:latest
+FROM nginx:latest
 
-CMD echo "Hello again! This is the first container that I have built!"
+# Add webapp.html to /www
+# 'Add' will create www if doesn't exist
+ADD webapp.html /www/
+
+# Add our nginx.conf and replace the default.conf
+ADD nginx.conf /etc/nginx/conf.d/default.conf
+
+# EXPOSE 80
+# EXPOSE 443
+
+# CMD nginx -g "daemon off;"
+
+
